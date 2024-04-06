@@ -3,10 +3,10 @@ import SmallCard from './SmallCard';
 
 /*  Cada set de datos es un objeto literal */
 
-/* <!-- Movies in DB --> */
+/* <!-- Products in DB --> */
 
-let moviesInDB = {
-    title: 'Movies in Data Base',
+let productsInDB = {
+    title: 'Products in Data Base',
     color: 'primary', 
     cuantity: 21,
     icon: 'fa-clipboard-list'
@@ -30,16 +30,16 @@ let actorsQuantity = {
     icon:'fa-user-check'
 }
 
-let cartProps = [moviesInDB, totalAwards, actorsQuantity];
+let cartProps = [productsInDB, totalAwards, actorsQuantity];
 
-function ContentRowMovies(){
+function Users(){
     return (
     
         <div className="row">
             
-            {cartProps.map( (movie, i) => {
+            {cartProps.map( (product, i) => {
 
-                return <SmallCard {...movie} key={i}/>
+                return <SmallCard {...product} key={i}/>
             
             })}
 
@@ -47,4 +47,4 @@ function ContentRowMovies(){
     )
 }
 
-export default ContentRowMovies;
+export default Users;

@@ -1,6 +1,6 @@
 import React from "react";
 
-function GenresInDb() {
+function Products() {
   return (
     <div className="col-lg-6 mb-4">
       <div className="card shadow mb-4">
@@ -43,4 +43,4 @@ function GenresInDb() {
   );
 }
 
-export default GenresInDb;
+export default Products;
