@@ -49,7 +49,7 @@ function SideBar(){
                 <li className="nav-item nav-link">
                 <Link className="nav-link" to="/Users">
                         <i className="fas fa-fw fa-table"></i>
-                        <span>Users</span></Link>
+                        <span>Content</span></Link>
                 </li>
 
                 {/*<!-- Divider -->*/}

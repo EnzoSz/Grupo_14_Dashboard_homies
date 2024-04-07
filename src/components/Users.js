@@ -24,43 +24,44 @@ function Users(){
       .catch(error => console.log(error));
     }, []);
 
-    /* <!-- products --> */
 
     let products = {
         title: 'Productos',
         color: 'primary', 
         cuantity: productsInDb.length,
-        icon: 'fa-clipboard-list'
+        icon: 'fa-clipboard-list',
+        data: productsInDb.product
     }
+
     
-    /* <!-- category --> */
-    
+
     let category = {
         title:'Categorias', 
         color:'success', 
         cuantity: "5",
-        icon:'fa-award'
+        icon:'fa-award',
+        data: undefined
     }
+
     
-    /* <!-- usuarios --> */
-    
+
     let users = {
         title: "Usuarios" ,
         color:'warning',
         cuantity: usersInDb.length,
-        icon:'fa-user-check'
+        icon:'fa-user-check',
+        data: usersInDb.user
     }
 
-    let cartProps = [products, category, users];
+    let cartProps = [products, users, category];
 
     return (
-    
+
         <div className="row">
-            
+
             {cartProps.map( (product, i) => {
                 return <SmallCard {...product} key={i}/>
-            
-            })}
+            })};
 
         </div>
     )
