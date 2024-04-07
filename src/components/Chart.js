@@ -1,26 +1,16 @@
-import React from 'react';
-import ChartRow from './ChartRow';
-
-let tableRowsData = [
-    {
-        Title: 'Billy Elliot ',
-        Length: '123',
-        Rating: '5',
-        Categories: ['Drama','Comedia'],
-        Awards: 2
-    },
-    {
-        Title: 'Alicia en el país de las maravillas',
-        Length: '142',
-        Rating: '4.8',
-        Categories: ['Drama','Acción','Comedia'],
-        Awards: 3
-    },
-    
-]
+import React, {useEffect, useState} from "react";
 
 
 function Chart (){
+    const [ productsInDb, setProductsInDb ] = useState([])
+
+    useEffect(() => {
+      fetch('http://localhost:3000/api-products')
+      .then(response => response.json())
+      .then(data => { setProductsInDb(data) })
+      .catch(error => console.log(error));
+    }, []);
+    
     return (
         /* <!-- DataTales Example --> */
         <div className="card shadow mb-4">
@@ -29,30 +19,34 @@ function Chart (){
                     <table className="table table-bordered" id="dataTable" width="100%" cellSpacing="0">
                         <thead>
                             <tr>
-                                <th>Título</th>
-                                <th>Duración</th>
-                                <th>Rating</th>
-                                <th>Género</th>
-                                <th>Premios</th>
+                                <th>Producto</th>
+                                <th>Descripcion</th>
+                                <th>Precio</th>
+                                <th>Agregado</th>                               
                             </tr>
                         </thead>
                         <tfoot>
-                            <tr>
-                                <th>Título</th>
-                                <th>Duración</th>
-                                <th>Rating</th>
-                                <th>Género</th>
-                                <th>Premios</th>
-                            </tr>
+                            {productsInDb.length === 0 
+                                ? <div className="col-lg-6 mb-4">
+                                    <div className="card bg-dark text-white shadow">
+                                        <div className="card-body">Cargando...</div>
+                                    </div>
+                                    </div>
+                                : productsInDb.product.map((product,i) => {
+                                    return (
+                                    <React.Fragment key={i}>
+                                        <tr>
+                                            <th>{product.name}</th>
+                                            <th>{product.description}</th>
+                                            <th>{product.price}</th>
+                                            <th>{product.created_at}</th>
+                                        </tr>
+                                    </React.Fragment>
+                                    )
+                                    })
+                                };
                         </tfoot>
-                        <tbody>
-                            {
-                            tableRowsData.map( ( row , i) => {
-                                return <ChartRow { ...row} key={i}/>
-                            })
-                            }
-
-                        </tbody>
+                        
                     </table>
                 </div>
             </div>
