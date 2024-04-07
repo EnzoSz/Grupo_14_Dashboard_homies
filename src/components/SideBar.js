@@ -44,18 +44,12 @@ function SideBar(){
                     </Link>
                 </li>
 
-                {/*<!-- Nav Item - Charts -->*/}
-                <li className="nav-item">
-                    <Link className="nav-link" to="/LastProductInDb">
-                        <i className="fas fa-fw fa-chart-area"></i>
-                        <span>Charts</span></Link>
-                </li>
-
+                
                 {/*<!-- Nav Item - Tables -->*/}
                 <li className="nav-item nav-link">
                 <Link className="nav-link" to="/Users">
                         <i className="fas fa-fw fa-table"></i>
-                        <span>Tables</span></Link>
+                        <span>Users</span></Link>
                 </li>
 
                 {/*<!-- Divider -->*/}
