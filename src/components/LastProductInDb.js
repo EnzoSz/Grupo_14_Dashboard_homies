@@ -1,5 +1,5 @@
 import React from 'react';
-import imagenFondo from '../assets/images/rsz_logo.jpg';
+import imagenFondo from '../assets/images/camisa-verde.jpg';
 
 function LastProductInDb(){
     return(
