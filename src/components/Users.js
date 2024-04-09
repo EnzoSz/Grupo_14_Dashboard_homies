@@ -1,70 +1,68 @@
-import React, {useEffect, useState} from "react";
-import SmallCard from './SmallCard';
+import React, { useEffect, useState } from "react";
+import SmallCard from "./SmallCard";
 
+let productsInDb = {
+  title: "Cantidad de Productos",
+  color: "primary",
+  icon: "fa-clipboard-list",
+};
 
-function Users(){
+let quantity = {
+  title: "Stock",
+  color: "success",
+  valor: 5,
+  icon: "fa-award",
+};
 
-    const [ usersInDb, setUsersInDb ] = useState([]);
-    const [ productsInDb, setProductsInDb ] = useState([]);
+let user = {
+  title: "Total de Usuarios",
+  color: "warning",
+  icon: "fa-user-check",
+};
 
-    useEffect(() => {
-      fetch('http://localhost:3000/api-user')
-      .then(response => response.json())
-      .then(data => { setUsersInDb(data)
-        console.log(data);
-    })
-      .catch(error => console.log(error));
-    }, []);
+function Users() {
+  const [users, setUsersInDb] = useState(user);
 
+  useEffect(() => {
+    fetch("http://localhost:3000/api-user")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setUsersInDb({
+          ...users,
+          valor: data.length,
+        });
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
-    useEffect(() => {
-      fetch('http://localhost:3000/api-products')
-      .then(response => response.json())
-      .then(data => { setProductsInDb(data) })
-      .catch(error => console.log(error));
-    }, []);
+  const [products, setProductsInDb] = useState(productsInDb);
 
+  useEffect(() => {
+    fetch("http://localhost:3000/api-products")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setProductsInDb({
+          ...products,
+          valor: data.length,
+          
+        });
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
-    let products = {
-        title: 'Productos',
-        color: 'primary', 
-        cuantity: productsInDb.length,
-        icon: 'fa-clipboard-list',
-        data: productsInDb.product
-    }
+  let cardProps = [products, users, quantity];
 
-    
-
-    let category = {
-        title:'Categorias', 
-        color:'success', 
-        cuantity: "5",
-        icon:'fa-award',
-        data: undefined
-    }
-
-    
-
-    let users = {
-        title: "Usuarios" ,
-        color:'warning',
-        cuantity: usersInDb.length,
-        icon:'fa-user-check',
-        data: usersInDb.user
-    }
-
-    let cartProps = [products, users, category];
-
-    return (
-
-        <div className="row">
-
-            {cartProps.map( (product, i) => {
-                return <SmallCard {...product} key={i}/>
-            })};
-
-        </div>
-    )
+  return (
+    <div className="row">
+      {cardProps.map((product, i) => {
+        return <SmallCard {...product} key={i} />;
+      })}
+    </div>
+  );
 }
 
 export default Users;
