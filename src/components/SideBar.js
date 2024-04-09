@@ -3,8 +3,9 @@ import image from '../assets/images/logopng.png';
 import ContentWrapper from './ContentWrapper';
 import Products from './Products';
 import LastProductInDb from './LastProductInDb';
-import Users from './Users';
+import ContentRowProduct from './ContentRowProduct';
 import NotFound from './NotFound';
+import UserList from './UserList';
 import {Link, Route, Switch} from 'react-router-dom';
 
 function SideBar(){
@@ -47,9 +48,9 @@ function SideBar(){
                 
                 {/*<!-- Nav Item - Tables -->*/}
                 <li className="nav-item nav-link">
-                <Link className="nav-link" to="/Users">
+                <Link className="nav-link" to="/UserList">
                         <i className="fas fa-fw fa-table"></i>
-                        <span>Content</span></Link>
+                        <span>Usuarios</span></Link>
                 </li>
 
                 {/*<!-- Divider -->*/}
@@ -83,8 +84,11 @@ function SideBar(){
                 <Route path="/LastProductInDb">
                     <LastProductInDb />
                 </Route>
-                <Route path="/Users">
-                    <Users />
+                <Route path="/ContentRowProduct">
+                    <ContentRowProduct />
+                </Route>
+                <Route path="/UserList">
+                    <UserList />
                 </Route>
                 <Route component={NotFound} />
             </Switch>

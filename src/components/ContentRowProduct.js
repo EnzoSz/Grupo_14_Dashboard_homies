@@ -20,7 +20,7 @@ let user = {
   icon: "fa-user-check",
 };
 
-function Users() {
+function ContentRowProduct() {
   const [users, setUsersInDb] = useState(user);
 
   useEffect(() => {
@@ -65,4 +65,4 @@ function Users() {
   );
 }
 
-export default Users;
+export default ContentRowProduct;
